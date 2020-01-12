@@ -124,12 +124,15 @@ namespace ContainsLink
                                 }
                             }
                         }
+
+                        excelWorkbook.Close(false);
+                        excelApp.Quit();
                     }
                     else if ((fileExt == "doc") || (fileExt == "docx"))
                     {
-                        Microsoft.Office.Interop.Word.Application applicationObject = new Microsoft.Office.Interop.Word.Application();
-                        Document aDDoc = applicationObject.Documents.Open(FileName: filename, ReadOnly: true);
-                        Microsoft.Office.Interop.Word.Hyperlinks hyperlinks = aDDoc.Hyperlinks;
+                        Microsoft.Office.Interop.Word.Application wordApp = new Microsoft.Office.Interop.Word.Application();
+                        Document doc = wordApp.Documents.Open(FileName: filename, ReadOnly: true);
+                        Microsoft.Office.Interop.Word.Hyperlinks hyperlinks = doc.Hyperlinks;
 
                         if (hyperlinks.Count > 0)
                         {
@@ -141,6 +144,9 @@ namespace ContainsLink
                                 links.Add(address);
                             }
                         }
+
+                        doc.Close(false);
+                        wordApp.Quit(false);
                     }
                     else if ((fileExt == "csv") || (fileExt == "txt"))
                     {
