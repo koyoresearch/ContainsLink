@@ -4,5 +4,4 @@ It will write the links to a log file on the user's desktop.
 
 This tool is helpful when you need to update documentation when moving a website, file share, or Sharepoint site.
 
-Crawl files for links
-Find links in files
+Crawl files for links; find links in files.
